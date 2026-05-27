@@ -48,7 +48,7 @@ export const SlideTabs = () => {
       {["Home", "Pricing", "Features", "Docs", "Blog"].map((tab, i) => (
          <Tab
             key={tab}
-            ref={(el) => (tabsRef.current[i] = el)}
+            ref={(el) => { tabsRef.current[i] = el; }}
             setPosition={setPosition}
             onClick={() => setSelected(i)}
           >
