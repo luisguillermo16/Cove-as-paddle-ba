@@ -8,9 +8,9 @@ import { useInView, Variants } from 'framer-motion';
  * @param margin Margen para activar la animación (ej: '-100px').
  * @returns Ref del elemento y estado booleano isInView.
  */
-export function useScrollReveal(margin = '-80px') {
+export function useScrollReveal(margin: string = '-80px') {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin });
+  const isInView = useInView(ref, { once: true, margin: margin as any });
   return { ref, isInView };
 }
 
