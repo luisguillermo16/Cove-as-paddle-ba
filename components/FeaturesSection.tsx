@@ -15,15 +15,6 @@ const serviceCategories = [
         image: '/cienaga.JPG',
         price: '$120.000',
         inclusions: 'Incluye hidratación, instructor y chaleco'
-      },
-      {
-        title: 'TOUR AL ATARDECER',
-        duration: '60 min',
-        description: 'Una travesía guiada para capturar las mejores fotos del sunset. Disfruta del paisaje marino con total serenidad.',
-        detailedDescription: 'Vive la magia del atardecer caribeño desde el agua. En este tour guiado remaremos hacia el horizonte justo cuando el sol comienza a ocultarse. Es el momento perfecto para relajarse, tomar fotos increíbles y conectar verdaderamente con el entorno.',
-        image: '/gallery-3.png',
-        price: 'Ver mas',
-        inclusions: 'Incluye fotos, guía y chaleco'
       }
     ]
   },
@@ -35,7 +26,7 @@ const serviceCategories = [
         duration: '30 min',
         description: 'Prueba la experiencia de remar a tu ritmo. Perfecto para un primer contacto rápido con el mar.',
         detailedDescription: 'Ideal si tienes poco tiempo o quieres hacer una primera prueba rápida. Te entregamos el equipo completo y, antes de entrar al agua, te damos una inducción rápida para garantizar tu seguridad.',
-        image: '/gallery-1.png',
+        image: '/alquileres.jpg',
         price: '$30.000',
         inclusions: 'Incluye equipo básico y chaleco'
       },
@@ -44,7 +35,7 @@ const serviceCategories = [
         duration: '60 min',
         description: 'Equipos de alta gama para que explores a tu propio ritmo. Incluye inducción básica de seguridad para navegar.',
         detailedDescription: 'Si prefieres la aventura a tu propio ritmo, nuestro alquiler por hora es ideal para ti. Te entregamos un equipo completo de alta gama, y antes de entrar al agua, te damos una inducción rápida para garantizar tu seguridad y disfrute total.',
-        image: '/gallery-1.png',
+        image: '/alquileres.jpg',
         price: '$60.000',
         inclusions: 'Incluye equipo básico y chaleco'
       }
@@ -58,7 +49,7 @@ const serviceCategories = [
         duration: '60 min',
         description: 'Aprende la técnica perfecta con instructores certificados. Ideal para principiantes que buscan confianza en el mar.',
         detailedDescription: 'Diseñada especialmente para quienes nunca se han subido a una tabla de paddle board o quieren mejorar su técnica. Un instructor certificado te acompañará durante toda la hora, asegurándose de que ganes equilibrio, confianza y, sobre todo, que te diviertas.',
-        image: '/gallery-2.png',
+        image: '/clases.jpg',
         price: '$80.000',
         inclusions: 'Incluye equipo, instructor y chaleco'
       }
@@ -204,7 +195,9 @@ export default function FeaturesSection() {
                     <span className="text-lg font-bold tracking-widest text-teal-600 uppercase">{selectedService.price}</span>
                   )}
                   <a 
-                    href="#reservar"
+                    href={`https://wa.me/573125971913?text=Hola,%20me%20gustaría%20reservar%20el%20servicio:%20${encodeURIComponent(selectedService.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setSelectedService(null)}
                     className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-8 rounded-full tracking-widest text-sm uppercase transition-colors shadow-lg shadow-teal-500/30"
                   >
