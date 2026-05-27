@@ -65,15 +65,7 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
           aria-label="Ir al inicio"
         >
-          <Image 
-            src="/logo.png" 
-            alt="Coveñas Paddle Bay Logo" 
-            width={180} 
-            height={50} 
-            className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105" 
-            priority
-          />
-          <span className="hidden sm:inline-block tracking-[0.2em] transition-all duration-500 uppercase text-xs font-medium">
+          <span className="inline-block tracking-[0.2em] transition-all duration-500 uppercase text-[10px] md:text-xs font-bold md:font-medium">
             <span className="text-white">Coveñas</span> <span className="text-teal-400">Paddle Bay</span>
           </span>
         </button>
