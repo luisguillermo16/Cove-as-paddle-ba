@@ -9,7 +9,7 @@ const EXPERIENCES = [
   {
     id: 'e1',
     type: 'video',
-    src: '/dron.MP4',
+    src: '/dron.mp4',
     alt: 'Vista aérea de Coveñas',
     label: 'Vistas increíbles',
     icon: VideoCameraIcon,
@@ -17,7 +17,7 @@ const EXPERIENCES = [
   {
     id: 'e2',
     type: 'video',
-    src: '/medusa.MOV',
+    src: '/medusa.mov',
     alt: 'Medusa en el mar de Coveñas',
     label: 'Encuentros sorpresa',
     icon: SparklesIcon,

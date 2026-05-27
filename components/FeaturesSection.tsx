@@ -12,7 +12,7 @@ const serviceCategories = [
         duration: '60 min',
         description: 'Descubre los manglares en un recorrido guiado espectacular. Conexión total con la naturaleza en aguas tranquilas.',
         detailedDescription: 'Nuestro tour por la Ciénaga de la Caimanera es una inmersión completa en uno de los ecosistemas más vibrantes de la región. Navegaremos por túneles de manglares, donde podrás observar aves exóticas, vida marina y una paz inigualable. Perfecto para familias y amantes de la fotografía.',
-        image: '/cienaga.JPG',
+        image: '/cienaga.jpg',
         price: '$120.000',
         inclusions: 'Incluye hidratación, instructor y chaleco'
       }

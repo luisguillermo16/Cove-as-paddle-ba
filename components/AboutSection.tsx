@@ -79,7 +79,7 @@ export default function AboutSection() {
           >
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative z-10">
               <img
-                src="/intro .jpg"
+                src="/intro.jpg"
                 alt="Paddle Board Experience"
                 className="w-full h-full object-cover"
               />
