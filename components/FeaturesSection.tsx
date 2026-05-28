@@ -87,7 +87,7 @@ export default function FeaturesSection() {
               <h3 className="text-2xl md:text-2xl font-medium tracking-[0.15em] uppercase text-slate-400 mb-8 border-b border-slate-200 pb-4">
                 {category.categoryName}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-5">
                 {category.services.map((service, index) => (
                   <motion.div
                     key={service.title}
@@ -96,7 +96,7 @@ export default function FeaturesSection() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => setSelectedService(service)}
-                    className="relative rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl aspect-[3/4] w-full"
+                    className="relative rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl h-[380px] md:h-auto md:aspect-[3/4] w-full"
                   >
                     {/* Background Image */}
                     <img
