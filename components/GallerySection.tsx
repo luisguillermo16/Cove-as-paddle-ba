@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { VideoCameraIcon, SparklesIcon, HeartIcon } from '@heroicons/react/24/outline';
@@ -34,6 +35,7 @@ const EXPERIENCES = [
 
 export default function GallerySection() {
   const { ref, isInView } = useScrollReveal('-40px');
+  const [activeId, setActiveId] = useState(EXPERIENCES[0].id);
 
   return (
     <section id="galeria" className="py-28 px-6 bg-sky-50/50">
@@ -70,19 +72,22 @@ export default function GallerySection() {
           </motion.p>
         </div>
 
-        {/* Accordion Gallery */}
         <motion.div
           ref={ref}
           variants={staggerContainerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="flex flex-col md:flex-row h-[800px] md:h-[600px] gap-4 w-full"
+          className="flex flex-col md:flex-row gap-6 md:gap-4 w-full md:h-[600px]"
         >
           {EXPERIENCES.map((item) => (
             <motion.div
               key={item.id}
               variants={cardItemVariants}
-              className="relative rounded-[2rem] overflow-hidden group cursor-pointer flex-1 md:hover:flex-[2.5] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl"
+              onClick={() => setActiveId(item.id)}
+              onMouseEnter={() => setActiveId(item.id)}
+              className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl h-[400px] md:h-auto ${
+                activeId === item.id ? 'md:flex-[2.5]' : 'md:flex-1 md:min-w-[80px]'
+              }`}
             >
               {item.type === 'video' ? (
                 <video
@@ -103,17 +108,26 @@ export default function GallerySection() {
                 />
               )}
               
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-sky-950/80 via-sky-950/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Overlays */}
+              <div className={`absolute inset-0 transition-colors duration-500 ${
+                activeId === item.id ? 'bg-transparent' : 'bg-transparent md:bg-black/40'
+              }`} />
+              <div className={`absolute inset-0 transition-opacity duration-500 bg-gradient-to-t from-sky-950/90 via-sky-950/20 to-transparent ${
+                activeId === item.id ? 'opacity-100' : 'opacity-100 md:opacity-60'
+              }`} />
 
               {/* Label */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end h-full">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+                <div className={`transition-all duration-500 ease-out flex items-center ${
+                  activeId === item.id 
+                    ? 'translate-y-0 opacity-100' 
+                    : 'translate-y-0 opacity-100 md:translate-y-4 md:opacity-90'
+                }`}>
                   <span
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white text-sm md:text-base font-bold shadow-lg whitespace-nowrap"
+                    className="inline-flex items-center gap-2 text-white text-lg md:text-xl font-bold drop-shadow-md whitespace-nowrap"
                   >
-                    <item.icon className="w-5 h-5" />
-                    {item.label}
+                    <item.icon className="w-6 h-6 md:w-7 md:h-7 flex-shrink-0" />
+                    <span className={`${activeId === item.id ? 'block' : 'block md:hidden lg:block'}`}>{item.label}</span>
                   </span>
                 </div>
               </div>

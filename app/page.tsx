@@ -1,12 +1,12 @@
-import Navbar             from '@/components/Navbar';
-import Hero               from '@/components/ui/demo';
-import AboutSection        from '@/components/AboutSection';
-import GallerySection      from '@/components/GallerySection';
-import FeaturesSection     from '@/components/FeaturesSection';
-import BenefitsSection     from '@/components/BenefitsSection';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/ui/demo';
+import AboutSection from '@/components/AboutSection';
+import GallerySection from '@/components/GallerySection';
+import FeaturesSection from '@/components/FeaturesSection';
+import BenefitsSection from '@/components/BenefitsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import CTASection          from '@/components/CTASection';
-import Footer              from '@/components/Footer';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
 
 /**
  * Landing page de Coveñas Paddle Bay — Coveñas, Colombia.
