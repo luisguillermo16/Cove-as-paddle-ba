@@ -26,7 +26,7 @@ const serviceCategories = [
         duration: '30 min',
         description: 'Prueba la experiencia de remar a tu ritmo. Perfecto para un primer contacto rápido con el mar.',
         detailedDescription: 'Ideal si tienes poco tiempo o quieres hacer una primera prueba rápida. Te entregamos el equipo completo y, antes de entrar al agua, te damos una inducción rápida para garantizar tu seguridad.',
-        image: '/alquileres.jpg',
+        image: '/media h.jpeg',
         price: '$30.000',
         inclusions: 'Incluye equipo básico y chaleco'
       },

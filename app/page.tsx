@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/ui/demo';
 import AboutSection from '@/components/AboutSection';
 import GallerySection from '@/components/GallerySection';
+import AlbumSection from '@/components/AlbumSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -10,7 +11,7 @@ import Footer from '@/components/Footer';
 
 /**
  * Landing page de Coveñas Paddle Bay — Coveñas, Colombia.
- * Orden: Hero → Experiencia → Galería → Servicios → Beneficios → Testimonios → Reservar → Footer
+ * Orden: Hero → Experiencia → Galería → Álbum → Servicios → Beneficios → Testimonios → Reservar → Footer
  */
 export default function LandingPage() {
   return (
@@ -27,6 +28,9 @@ export default function LandingPage() {
 
         {/* 3 · Galería — fotos reales del mar */}
         <GallerySection />
+
+        {/* 3.5 · Álbum — fotos adicionales */}
+        <AlbumSection />
 
         {/* 4 · Servicios — alquiler / primera clase / tour atardecer */}
         <FeaturesSection />

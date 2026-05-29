@@ -33,6 +33,30 @@ const EXPERIENCES = [
   },
 ];
 
+function VideoWithLoading({ src, className }: { src: string; className: string }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-100/50 backdrop-blur-sm z-10">
+          <div className="w-8 h-8 border-4 border-teal-500/20 border-t-teal-500 rounded-full animate-spin" />
+        </div>
+      )}
+      <video
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        onCanPlay={() => setIsLoading(false)}
+        className={className}
+      />
+    </>
+  );
+}
+
 export default function GallerySection() {
   const { ref, isInView } = useScrollReveal('-40px');
   const [activeId, setActiveId] = useState(EXPERIENCES[0].id);
@@ -90,12 +114,8 @@ export default function GallerySection() {
               }`}
             >
               {item.type === 'video' ? (
-                <video
+                <VideoWithLoading
                   src={item.src}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
               ) : (
