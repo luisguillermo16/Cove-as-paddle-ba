@@ -27,9 +27,6 @@ export default function CTASection() {
           <div className="relative z-10 p-10 md:p-20 grid lg:grid-cols-2 gap-12 items-center">
 
             <div>
-              <span className="text-teal-400 font-medium tracking-[0.35em] uppercase text-xs mb-5 block">
-                Únete a nosotros
-              </span>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white leading-tight mb-6">
                 ¿LISTO PARA TU <br />
                 <span className="text-teal-400">PRÓXIMA AVENTURA?</span>

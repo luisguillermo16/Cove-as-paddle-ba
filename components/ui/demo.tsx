@@ -10,33 +10,41 @@ function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen w-full items-center justify-center">
+    <section className="relative flex h-screen w-full items-end pb-24 md:pb-32 px-6 md:px-16 overflow-hidden">
+      {/* Background with a more sophisticated gradient overlay instead of solid black */}
       <div
-        className="absolute inset-0 bg-center bg-cover"
+        className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 scale-105"
         style={{ backgroundImage: "url('/hero.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1220]/80 via-[#0A1220]/30 to-transparent mix-blend-multiply" />
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
-      <div className="relative z-20 max-w-5xl px-6 text-center text-white">
-        <h1 className="text-center font-kanturmuy font-normal text-5xl text-white tracking-tight md:text-6xl lg:text-8xl mb-6 md:mb-8">
-          Explora la Serenidad
+      <div className="relative z-20 max-w-4xl text-left">
+        
+        <h1 className="font-cormorant font-medium text-[#FAF9F6] text-6xl md:text-7xl lg:text-9xl leading-[0.9] tracking-tight mb-8">
+          Explora<br />
+          <span className="italic font-light text-[#FAF9F6]/90">la Serenidad</span>
         </h1>
 
-        <p className="mx-auto mb-8 max-w-2xl text-center font-light text-lg text-white/90 md:text-xl">
-          Desconecta del mundo y fluye sobre las aguas turquesas del Caribe.
-          La experiencia de paddle board más exclusiva de Coveñas.
-        </p>
+        <div className="flex flex-col md:flex-row md:items-end gap-10">
+          <p className="max-w-md font-jakarta font-light text-base text-[#FAF9F6]/80 leading-relaxed">
+            Desconecta del mundo y fluye sobre las aguas turquesas del Caribe.
+            La experiencia de paddle board más exclusiva.
+          </p>
 
-        <a
-          href="https://wa.me/573125971913"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 border border-white/30 hover:border-white/60 text-white/80 hover:text-white backdrop-blur-sm px-8 py-4 rounded-full font-medium tracking-widest text-xs uppercase transition-all duration-300 mx-auto"
-        >
-          <WhatsAppIcon className="w-4 h-4" />
-          Reservar Ahora
-        </a>
+          <a
+            href="https://wa.me/573125971913"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-4 bg-[#FAF9F6] text-[#0A1220] hover:bg-[#6B8E8E] hover:text-[#FAF9F6] px-8 py-5 rounded-none font-jakarta font-medium tracking-[0.2em] text-xs uppercase transition-colors duration-500 overflow-hidden"
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              <WhatsAppIcon className="w-4 h-4" />
+              Reservar
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );

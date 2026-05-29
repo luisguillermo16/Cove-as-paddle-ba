@@ -29,14 +29,6 @@ export default function AlbumSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 md:mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="block text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-teal-600 mb-4"
-          >
-            Nuestro Álbum
-          </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +36,7 @@ export default function AlbumSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl font-light text-slate-900 tracking-tighter leading-tight"
           >
-            Instantes <span className="font-bold">Inolvidables</span>
+            <span className="font-bold"> Instantes Inolvidables</span>
           </motion.h2>
         </div>
 
@@ -57,7 +49,7 @@ export default function AlbumSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 1, 0.5, 1] }}
               onClick={() => setSelectedImage(src)}
-              className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-xl md:rounded-3xl group cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
+              className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-none group cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
             >
               <Image
                 src={src}
@@ -91,7 +83,7 @@ export default function AlbumSection() {
               onClick={() => setSelectedImage(null)}
               className="absolute inset-0 bg-black/95 backdrop-blur-xl cursor-pointer"
             />
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -99,8 +91,8 @@ export default function AlbumSection() {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative w-full h-full flex items-center justify-center p-0 md:p-12 pointer-events-none"
             >
-              <div 
-                className="relative w-full h-full md:rounded-2xl overflow-hidden pointer-events-auto cursor-default flex items-center justify-center"
+              <div
+                className="relative w-full h-full rounded-none overflow-hidden pointer-events-auto cursor-default flex items-center justify-center"
                 onClick={(e) => {
                   // Allow closing by clicking the image itself on mobile
                   if (window.innerWidth < 768) setSelectedImage(null);

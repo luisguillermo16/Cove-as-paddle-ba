@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { VideoCameraIcon, SparklesIcon, HeartIcon } from '@heroicons/react/24/outline';
 import { useScrollReveal, staggerContainerVariants, cardItemVariants } from './Animations';
+import { useState } from 'react';
+
 
 const EXPERIENCES = [
   {
@@ -12,87 +12,87 @@ const EXPERIENCES = [
     type: 'video',
     src: '/dron.mp4',
     alt: 'Vista aérea de Coveñas',
-    label: 'Vistas increíbles',
-    icon: VideoCameraIcon,
+    label: 'Vistas Increíbles',
   },
   {
     id: 'e2',
     type: 'video',
     src: '/medusa.mov',
     alt: 'Medusa en el mar de Coveñas',
-    label: 'Encuentros sorpresa',
-    icon: SparklesIcon,
+    label: 'Encuentros Sorpresa',
+
   },
   {
     id: 'e3',
     type: 'image',
     src: '/perritos.jpg',
     alt: 'Perritos disfrutando del mar',
-    label: 'Amigos peludos',
-    icon: HeartIcon,
+    label: 'Amigos Peludos',
+
   },
 ];
 
 function VideoWithLoading({ src, className }: { src: string; className: string }) {
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Determinamos el tipo de video según la extensión para mejor compatibilidad
+  const isMov = src.toLowerCase().endsWith('.mov');
 
   return (
     <>
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-100/50 backdrop-blur-sm z-10">
-          <div className="w-8 h-8 border-4 border-teal-500/20 border-t-teal-500 rounded-full animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center bg-[#0A1220]/5 z-10">
+          <div className="w-6 h-6 border-2 border-[#6B8E8E]/20 border-t-[#6B8E8E] rounded-full animate-spin" />
         </div>
       )}
       <video
-        src={src}
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
-        onCanPlay={() => setIsLoading(false)}
+        preload="metadata" // Cambiado de auto a metadata para no bloquear la carga inicial de la página
+        onLoadedData={() => setIsLoading(false)}
         className={className}
-      />
+      >
+        {/* Siempre es ideal tener una versión mp4 como fallback universal */}
+        <source src={src} type={isMov ? 'video/quicktime' : 'video/mp4'} />
+        {/* 
+          Nota para el futuro: Si comprimes los videos a webm, puedes agregar la línea abajo
+          <source src={src.replace('.mp4', '.webm')} type="video/webm" /> 
+        */}
+      </video>
     </>
   );
 }
 
 export default function GallerySection() {
   const { ref, isInView } = useScrollReveal('-40px');
-  const [activeId, setActiveId] = useState(EXPERIENCES[0].id);
 
   return (
-    <section id="galeria" className="py-28 px-6 bg-sky-50/50">
+    <section id="galeria" className="py-32 px-6 md:px-12 bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-12">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="block text-xs font-bold uppercase tracking-[0.25em] text-teal-500 mb-4"
-          >
-            Momentos Inolvidables
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6"
-          >
-            Experiencias Reales en el{' '}
-            <span className="text-gradient-ocean">Mar Caribe</span>
-          </motion.h2>
+        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
+          <div className="max-w-xl">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-light text-[#0A1220] tracking-tight leading-none"
+            >
+              Momentos Únicos
+            </motion.h2>
+          </div>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl mx-auto text-slate-500 text-lg"
+            className="max-w-md font-jakarta font-light text-sm text-[#0A1220]/70"
           >
-            Cada salida al mar es única. Dependiendo de la temporada y las circunstancias, la naturaleza nos regala encuentros y paisajes espectaculares que quedarán en tu memoria para siempre.
+            Cada salida al mar es irrepetible. La naturaleza nos regala paisajes y encuentros espectaculares que quedarán en tu memoria.
           </motion.p>
         </div>
 
@@ -101,77 +101,64 @@ export default function GallerySection() {
           variants={staggerContainerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="flex flex-col md:flex-row gap-6 md:gap-4 w-full md:h-[600px]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full h-[800px] md:h-[500px]"
         >
           {EXPERIENCES.map((item) => (
             <motion.div
               key={item.id}
               variants={cardItemVariants}
-              onClick={() => setActiveId(item.id)}
-              onMouseEnter={() => setActiveId(item.id)}
-              className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl h-[400px] md:h-auto ${
-                activeId === item.id ? 'md:flex-[2.5]' : 'md:flex-1 md:min-w-[80px]'
-              }`}
+              className="relative overflow-hidden bg-[#0A1220]/5 group"
             >
               {item.type === 'video' ? (
                 <VideoWithLoading
                   src={item.src}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               ) : (
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               )}
-              
-              {/* Overlays */}
-              <div className={`absolute inset-0 transition-colors duration-500 ${
-                activeId === item.id ? 'bg-transparent' : 'bg-transparent md:bg-black/40'
-              }`} />
-              <div className={`absolute inset-0 transition-opacity duration-500 bg-gradient-to-t from-sky-950/90 via-sky-950/20 to-transparent ${
-                activeId === item.id ? 'opacity-100' : 'opacity-100 md:opacity-60'
-              }`} />
 
-              {/* Label */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 flex flex-col justify-end h-full pointer-events-none">
-                <div className={`transition-all duration-500 ease-out flex items-center ${
-                  activeId === item.id 
-                    ? 'translate-y-0 opacity-100' 
-                    : 'translate-y-0 opacity-100 md:translate-y-4 md:opacity-90'
-                }`}>
-                  <span
-                    className="inline-flex items-center gap-2 text-white text-lg md:text-xl font-bold drop-shadow-md whitespace-nowrap"
-                  >
-                    <item.icon className="w-6 h-6 md:w-7 md:h-7 flex-shrink-0" />
-                    <span className={`${activeId === item.id ? 'block' : 'block md:hidden lg:block'}`}>{item.label}</span>
-                  </span>
-                </div>
+              {/* Permanent overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1220]/80 via-transparent to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+
+              {/* Label - Always visible */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+                <span
+                  className="inline-flex items-center gap-3 text-[#FAF9F6] font-cormorant text-2xl md:text-3xl font-medium drop-shadow-md"
+                >
+
+                  <span>{item.label}</span>
+                </span>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Bottom invite */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center mt-12 text-slate-500 text-base"
+          className="mt-20 flex justify-center"
         >
-          ¿Qué sorpresas te esperan a ti?{' '}
-          <button
-            onClick={() => document.getElementById('reservar')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-sky-600 font-semibold hover:underline underline-offset-2 transition-all"
+          <a
+            href="https://wa.me/573125971913"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-4 bg-transparent text-[#0A1220] px-6 py-3 font-jakarta font-medium tracking-[0.2em] text-xs uppercase transition-colors"
           >
-            Reserva tu experiencia
-          </button>{' '}
-          y descúbrelo.
-        </motion.p>
+            <span className="relative z-10 border-b border-[#0A1220]/30 group-hover:border-[#0A1220] transition-colors pb-1">
+              Únete a la Aventura
+            </span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

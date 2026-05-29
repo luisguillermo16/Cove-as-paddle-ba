@@ -30,21 +30,14 @@ export default function TestimonialsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-teal-400 font-medium tracking-[0.3em] uppercase text-xs mb-4 block"
-          >
-            Opiniones Reales
-          </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-light tracking-tighter text-white"
           >
-            LO QUE <span className="font-bold">NUESTROS CLIENTES</span> DICEN
+            <span className="font-bold">LO QUE NUESTROS CLIENTES DICEN</span>
           </motion.h2>
         </div>
 

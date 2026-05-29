@@ -61,72 +61,70 @@ export default function FeaturesSection() {
   const [selectedService, setSelectedService] = useState<typeof serviceCategories[0]['services'][0] | null>(null);
 
   return (
-    <section id="servicios" className="py-32 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="servicios" className="py-32 relative overflow-hidden bg-[#FAF9F6]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="text-center mb-20">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-teal-500 font-medium tracking-[0.3em] uppercase text-xs mb-4 block"
-          >
-            Nuestros Servicios
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900"
-          >
-            EXPERIENCIAS <span className="font-bold">A TU MEDIDA</span>
-          </motion.h2>
+        <div className="mb-24 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[#0A1220]/10 pb-12">
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#0A1220] leading-none"
+            >
+              Experiencias <br />
+              <span className="italic">a tu medida</span>
+            </motion.h2>
+          </div>
+          <p className="max-w-xs font-jakarta font-light text-sm text-[#0A1220]/70">
+            Cada travesía está diseñada para conectarte con el océano, respetando tu ritmo y la naturaleza.
+          </p>
         </div>
 
         <div>
           {serviceCategories.map((category) => (
-            <div key={category.categoryName} className="mb-20 last:mb-0">
-              <h3 className="text-2xl md:text-2xl font-medium tracking-[0.15em] uppercase text-slate-400 mb-8 border-b border-slate-200 pb-4">
+            <div key={category.categoryName} className="mb-24 last:mb-0">
+              <h3 className="font-jakarta text-xs font-semibold tracking-[0.25em] uppercase text-[#0A1220]/50 mb-10">
                 {category.categoryName}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                 {category.services.map((service, index) => (
                   <motion.div
                     key={service.title}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setSelectedService(service)}
-                    className="relative rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm hover:shadow-2xl h-[380px] md:h-auto md:aspect-[3/4] w-full"
+                    className="group cursor-pointer flex flex-col h-full"
                   >
-                    {/* Background Image */}
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
+                    {/* Minimalist Image Container */}
+                    <div className="relative overflow-hidden aspect-[4/5] w-full mb-6 bg-[#0A1220]/5">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="absolute inset-0 w-full h-full object-cover grayscale-[20%] transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                      />
+                    </div>
                     
-                    {/* Dark Overlays */}
-                    <div className="absolute inset-0 transition-colors duration-500 bg-transparent group-hover:bg-black/20" />
-                    <div className="absolute inset-0 transition-opacity duration-500 bg-gradient-to-t from-sky-950/90 via-sky-950/40 to-transparent opacity-90 group-hover:opacity-100" />
-
-                    {/* Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end h-full">
-                      <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                        <div className="flex items-center gap-1.5 text-teal-300 mb-2">
-                          <ClockIcon className="w-4 h-4 md:w-5 md:h-5" />
-                          <span className="text-xs md:text-sm font-bold tracking-widest uppercase">{service.duration}</span>
+                    {/* Content below image (Editorial style) */}
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="font-cormorant font-medium text-2xl text-[#0A1220] group-hover:text-[#6B8E8E] transition-colors">
+                            {service.title}
+                          </h3>
+                          <span className="font-jakarta text-xs tracking-widest text-[#0A1220]/50 uppercase">{service.duration}</span>
                         </div>
-                        
-                        <h3 className="font-bold tracking-tight text-base md:text-xl text-white mb-2 drop-shadow-md">
-                          {service.title}
-                        </h3>
-
-                        <div className="flex justify-between items-center mt-4">
-                          <span className="text-sm md:text-base font-bold tracking-widest text-teal-400 uppercase drop-shadow-md">{service.price}</span>
-                          <span className="inline-flex items-center gap-1.5 text-white/70 border border-white/20 rounded-full px-3 py-1.5 text-xs font-medium tracking-wide group-hover:text-white group-hover:border-white/50 transition-all duration-500">
-                            Ver más <ArrowIcon className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform duration-300" />
-                          </span>
-                        </div>
+                        <p className="font-jakarta text-sm font-light leading-relaxed text-[#0A1220]/70 mb-6 line-clamp-2">
+                          {service.description}
+                        </p>
+                      </div>
+                      
+                      <div className="flex justify-between items-center pt-4 border-t border-[#0A1220]/10">
+                        <span className="font-jakarta text-sm tracking-widest text-[#0A1220] uppercase">{service.price}</span>
+                        <span className="font-jakarta text-xs uppercase tracking-[0.2em] text-[#6B8E8E] flex items-center gap-2 group-hover:gap-4 transition-all">
+                          Ver más <ArrowIcon className="w-3 h-3" />
+                        </span>
                       </div>
                     </div>
                   </motion.div>
@@ -140,87 +138,80 @@ export default function FeaturesSection() {
       {/* Modal */}
       <AnimatePresence>
         {selectedService && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedService(null)}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0A1220]/40 backdrop-blur-sm"
             />
             
-            {/* Panel — full screen on mobile, floating card on desktop */}
+            {/* Panel */}
             <motion.div
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-              className="fixed inset-0 md:relative md:inset-auto md:w-full md:max-w-lg bg-white md:rounded-[2rem] shadow-2xl z-10 flex flex-col overflow-hidden"
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-4xl bg-[#FAF9F6] shadow-2xl z-10 flex flex-col md:flex-row overflow-hidden max-h-[90vh]"
             >
-              {/* Full-bleed image with overlay content */}
-              <div className="relative h-[45vh] md:h-72 w-full flex-shrink-0">
+              <button
+                onClick={() => setSelectedService(null)}
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 text-[#0A1220] hover:text-[#6B8E8E] transition-colors bg-[#FAF9F6] p-2 rounded-full"
+              >
+                <CloseIcon className="w-5 h-5" />
+              </button>
+
+              {/* Image Side */}
+              <div className="relative h-64 md:h-auto md:w-1/2 flex-shrink-0">
                 <img
                   src={selectedService.image}
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+              </div>
 
-                {/* Top nav row */}
-                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-5 pt-12 md:pt-5">
-                  <button
-                    onClick={() => setSelectedService(null)}
-                    className="flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    Servicios
-                  </button>
-                </div>
-
-                {/* Title at bottom of image */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <div className="flex items-center gap-1.5 text-teal-300 mb-1.5">
-                    <ClockIcon className="w-3.5 h-3.5" />
-                    <span className="text-xs font-bold tracking-widest uppercase">{selectedService.duration}</span>
-                  </div>
-                  <h3 className="font-bold text-2xl text-white leading-tight">
+              {/* Content Side */}
+              <div className="flex-1 flex flex-col p-8 md:p-12 overflow-y-auto">
+                <div className="flex-1">
+                  <span className="inline-block font-jakarta text-[10px] uppercase tracking-[0.25em] text-[#6B8E8E] mb-4">
+                    {selectedService.duration}
+                  </span>
+                  
+                  <h3 className="font-cormorant font-medium text-4xl text-[#0A1220] leading-tight mb-6">
                     {selectedService.title}
                   </h3>
-                </div>
-              </div>
 
-              {/* Scrollable body */}
-              <div className="flex-1 overflow-y-auto px-5 py-6 md:px-8 md:py-7">
-                <p className="text-slate-500 font-light leading-relaxed text-sm md:text-base mb-5">
-                  {selectedService.detailedDescription || selectedService.description}
-                </p>
+                  <p className="font-jakarta text-sm font-light leading-relaxed text-[#0A1220]/70 mb-10">
+                    {selectedService.detailedDescription || selectedService.description}
+                  </p>
 
-                <div className="flex items-center gap-2 text-teal-600 text-xs font-medium mb-8">
-                  <CheckIcon className="w-4 h-4 flex-shrink-0" />
-                  <span>{selectedService.inclusions}</span>
-                </div>
-              </div>
-
-              {/* Sticky footer CTA */}
-              <div className="flex-shrink-0 border-t border-slate-100 px-5 py-4 md:px-8 flex justify-between items-center bg-white">
-                {selectedService.price !== 'Ver mas' && (
-                  <div>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-0.5">Precio</p>
-                    <span className="text-lg font-bold text-teal-600">{selectedService.price}</span>
+                  <div className="flex items-start gap-3 p-4 bg-[#0A1220]/5 mb-10">
+                    <CheckIcon className="w-4 h-4 text-[#6B8E8E] mt-0.5" />
+                    <span className="font-jakarta text-xs font-medium text-[#0A1220]/80 tracking-wide uppercase">{selectedService.inclusions}</span>
                   </div>
-                )}
-                <a
-                  href={`https://wa.me/573125971913?text=Hola,%20me%20gustaría%20reservar%20el%20servicio:%20${encodeURIComponent(selectedService.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setSelectedService(null)}
-                  className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3.5 px-7 rounded-full tracking-widest text-xs uppercase transition-colors shadow-lg shadow-teal-500/30"
-                >
-                  Reservar Ahora
-                </a>
+                </div>
+
+                {/* Footer CTA */}
+                <div className="pt-8 border-t border-[#0A1220]/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  {selectedService.price !== 'Ver mas' && (
+                    <div>
+                      <p className="font-jakarta text-[10px] text-[#0A1220]/40 uppercase tracking-[0.2em] mb-1">Inversión</p>
+                      <span className="font-jakarta text-lg font-medium text-[#0A1220]">{selectedService.price}</span>
+                    </div>
+                  )}
+                  <a
+                    href={`https://wa.me/573125971913?text=Hola,%20me%20gustaría%20reservar%20el%20servicio:%20${encodeURIComponent(selectedService.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setSelectedService(null)}
+                    className="group inline-flex items-center justify-center gap-4 bg-[#0A1220] hover:bg-[#6B8E8E] text-[#FAF9F6] px-8 py-4 font-jakarta font-medium tracking-[0.2em] text-xs uppercase transition-colors duration-500"
+                  >
+                    Reservar Ahora
+                    <ArrowIcon className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -240,7 +231,7 @@ function ArrowIcon(props: any) {
 
 function CloseIcon(props: any) {
   return (
-    <svg fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" {...props}>
+    <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
@@ -248,16 +239,8 @@ function CloseIcon(props: any) {
 
 function CheckIcon(props: any) {
   return (
-    <svg fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  );
-}
-
-function ClockIcon(props: any) {
-  return (
     <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
     </svg>
   );
 }

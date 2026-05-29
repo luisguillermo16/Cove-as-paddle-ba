@@ -50,11 +50,10 @@ export default function Navbar() {
           damping: 20,
           mass: 1
         }}
-        className={`pointer-events-auto w-full flex items-center justify-between px-8 py-4 transition-colors duration-500 ${
-          scrolled
+        className={`pointer-events-auto w-full flex items-center justify-between px-8 py-4 transition-colors duration-500 ${scrolled
             ? 'bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl'
             : 'bg-transparent border-b border-transparent'
-        }`}
+          }`}
       >
         {/* LOGO */}
         <button
@@ -66,7 +65,7 @@ export default function Navbar() {
           aria-label="Ir al inicio"
         >
           <span className="inline-block tracking-[0.2em] transition-all duration-500 uppercase text-[10px] md:text-xs font-bold md:font-medium">
-            <span className="text-white">Coveñas</span> <span className="text-teal-400">Paddle Bay</span>
+            <span className="text-white">Coveñas Paddle Bay</span>
           </span>
         </button>
 
@@ -112,11 +111,10 @@ export default function Navbar() {
               setSelected(-1);
               document.getElementById('reservar')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className={`group relative inline-flex items-center gap-2 px-6 rounded-none font-medium tracking-widest text-[10px] transition-all duration-500 active:scale-95 shadow-xl uppercase ${
-              scrolled 
-                ? 'bg-teal-400 text-black py-2 hover:bg-teal-300' 
+            className={`group relative inline-flex items-center gap-2 px-6 rounded-none font-medium tracking-widest text-[10px] transition-all duration-500 active:scale-95 shadow-xl uppercase ${scrolled
+                ? 'bg-teal-400 text-black py-2 hover:bg-teal-300'
                 : 'bg-white text-black py-2.5 hover:bg-teal-400'
-            }`}
+              }`}
           >
             Reservar
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -187,9 +185,8 @@ const Tab = React.forwardRef<HTMLLIElement, { children: React.ReactNode, setPosi
             opacity: 1,
           });
         }}
-        className={`relative z-10 block cursor-pointer px-5 py-2 text-[10px] font-medium uppercase tracking-[0.15em] transition-all duration-300 md:text-xs ${
-          isActive ? 'text-white' : 'text-white/60 hover:text-white'
-        }`}
+        className={`relative z-10 block cursor-pointer px-5 py-2 text-[10px] font-medium uppercase tracking-[0.15em] transition-all duration-300 md:text-xs ${isActive ? 'text-white' : 'text-white/60 hover:text-white'
+          }`}
       >
         {children}
       </li>

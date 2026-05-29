@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  ShieldCheckIcon, 
-  HeartIcon, 
+import {
+  ShieldCheckIcon,
+  HeartIcon,
   MapIcon,
   UserGroupIcon
 } from '@heroicons/react/24/outline';
@@ -35,23 +35,16 @@ export default function BenefitsSection() {
   return (
     <section id="beneficios" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         <div className="grid lg:grid-cols-12 gap-16 items-center">
-          
+
           <div className="lg:col-span-4">
-            <motion.span 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-teal-500 font-medium tracking-[0.3em] uppercase text-xs mb-4 block"
-            >
-              ¿Por qué elegirnos?
-            </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900 leading-tight mb-8"
             >
-              LA CALIDAD QUE <br />
+              <span className="font-bold">LA CALIDAD QUE</span> <br />
               <span className="font-bold">TU DESCANSO MERECE</span>
             </motion.h2>
             <p className="text-slate-500 font-light leading-relaxed mb-10">
