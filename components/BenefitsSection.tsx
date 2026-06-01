@@ -44,8 +44,7 @@ export default function BenefitsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900 leading-tight mb-8"
             >
-              <span className="font-bold">LA CALIDAD QUE</span> <br />
-              <span className="font-bold">TU DESCANSO MERECE</span>
+              <span className="font-bold">LA CALIDAD QUE</span> TU DESCANSO MERECE
             </motion.h2>
             <p className="text-slate-500 font-light leading-relaxed mb-10">
               No solo alquilamos tablas; creamos momentos de desconexión total con los más altos estándares de servicio en el Golfo de Morrosquillo.
